@@ -1,15 +1,15 @@
 <?php
 
 
-namespace App;
+namespace App\models;
+require __DIR__.'/../vendor/autoload.php';
+
+use App\contracts\EvaluacionAbs;
+use App\contracts\EvaluacionI;
 
 
 
-trait MostrarFecha{
-  public function mostrarFecha(){
-    echo date ("Y-m-d", null);
-  }
-}
+
 
 // es como un contrato (interface) obliga a la clase a deba implementar el metodo,
 // ademas no se le puede agregar metodos como en abstract, interface no lo permite
@@ -27,32 +27,11 @@ class Evaluacion extends EvaluacionAbs implements EvaluacionI{
     }
 }
 
-class Parcial extends Evaluacion{
-
-  public function __construct($nombreEvaluacion , $ponderacion, public array $notas){
-    parent::__construct($nombreEvaluacion , $ponderacion);
-  }
-
-   public function calcularNota(){
-        return array_sum($this->notas)/count($this->notas);
-    }
-
-}
 
 
 
-class Proyecto extends Evaluacion
-{
-  // Recibe el array en el constructor
-  public function __construct($nombreEvaluacion, $ponderacion, public array $notaPoryecto){
-    parent::__construct($nombreEvaluacion, $ponderacion);
-  }
 
-  public function calcularNota(){
-    return ($this->notaPoryecto['notaDefensa'] + $this->notaPoryecto['notaProyecto']) / 2;
-    
-  }
-}
+
 
 class Alumno {
   public static $nombreAlumno;
@@ -68,7 +47,7 @@ class Alumno {
   }
 }
 
-$parcial = new Parcial("Parcial 1", 0.25, [6,7,9]);
+/* $parcial = new Parcial("Parcial 1", 0.25, [6,7,9]);
 echo $parcial->calcularNota() . "\n";
 echo "<br>";
 $laboratorio = new Laboratorio("Laboratorio 1", 0.15, 7);
@@ -89,5 +68,8 @@ echo $proyecto->aporteNota();
 echo '<br>';
 $laboratorio->mostrarFecha(); 
 echo '<br>';
-echo Alumno::mostarMensaje("Vilma");
+echo Alumno::mostarMensaje("Vilma");*/
+
+
+
 ?>

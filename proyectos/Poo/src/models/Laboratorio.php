@@ -1,9 +1,9 @@
 <?php
 
-require __DIR__.'/../vendor/autoload.php'
-
-use App/Evaluacion;
-use App/MostrarFecha;
+namespace App\models;
+require __DIR__."/../vendor/autoload.php";
+use App\models\Evaluacion;
+use App\utils\MostrarFecha;
 
 class Laboratorio extends Evaluacion{
 
